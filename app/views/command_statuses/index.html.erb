@@ -1,0 +1,30 @@
+- title "Command Status"
+
+%table.table.table-striped.sortable
+  %thead
+    %tr
+      %th Key
+      %th Total Count
+      %th Success Count
+      %th Status
+      %th Last Attempt
+      %th Last Success
+      %th Duration
+      %th Message
+  %tbody
+    - @command_statuses.each do |t|
+      %tr
+        %td.tool= t.key
+        %td= t.total_count
+        %td= t.success_count
+        %td= t.status
+        %td.date= t.created_at
+        %td.date= t.last_success
+        %td.date= t.duration
+        %td
+          - if t.message
+            %details
+              %summary
+              %div
+                = t.message
+
