@@ -44,8 +44,8 @@ class LoggedRunner
     when ActiveRecord::Relation
       cs.total_count = list.count
       initialize_pbar
-      list.find_each do |item|
-        run_item(item)
+      list.find_each do |list_item|
+        run_item(list_item)
       end
     else
       cs.total_count = 1

@@ -1,8 +1,0 @@
-# Logfile created on 2012-08-21 10:27:37 -0400 by logger.rb/31641
-D, [2012-08-21T10:27:38.251079 #88773] DEBUG -- :   [1m[36m (16.6ms)[0m  [1mDELETE FROM command_statuses[0m
-D, [2012-08-21T10:28:17.656492 #89033] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mDELETE FROM command_statuses[0m
-D, [2012-08-21T10:31:09.644896 #89709] DEBUG -- :   [1m[36m (29.8ms)[0m  [1mDELETE FROM command_statuses[0m
-D, [2012-08-21T10:31:27.169501 #89957] DEBUG -- :   [1m[36m (4.8ms)[0m  [1mDELETE FROM command_statuses[0m
-D, [2012-08-21T10:33:14.687270 #90464] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mDELETE FROM command_statuses[0m
-D, [2012-08-21T10:34:02.706190 #90536] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mDELETE FROM command_statuses[0m
-D, [2012-08-21T10:34:36.022260 #90780] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mDELETE FROM command_statuses[0m

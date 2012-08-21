@@ -9,4 +9,9 @@ ActiveRecord::Schema.define :version => 0 do
     t.datetime "updated_at"
     t.string   "failed_instance"
   end
+
+  create_table "dummies", :force => true do |t|
+    t.integer "kind"
+    t.string  "name"
+  end
 end

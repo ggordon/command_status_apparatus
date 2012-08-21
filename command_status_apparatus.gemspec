@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = CommandStatusApparatus::VERSION
 
+  gem.add_dependency 'progressbar'
+
   gem.add_runtime_dependency 'rails', '~> 3.0'
 
   gem.add_development_dependency 'sqlite3'
