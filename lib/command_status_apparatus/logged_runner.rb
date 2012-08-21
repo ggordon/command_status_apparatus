@@ -17,7 +17,9 @@ class LoggedRunner
   end
 
   def self.run(key, method, *args, &blk)
-    LoggedRunner.new(key, method, args).tap { |lr| lr.run(&blk) }
+    lr = LoggedRunner.new(key, method, args)
+    lr.run(&blk)
+    lr
   end
 
   def run(&blk)
