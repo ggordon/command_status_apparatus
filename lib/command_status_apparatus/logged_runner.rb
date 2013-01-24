@@ -58,7 +58,7 @@ class LoggedRunner
 
   def initialize_pbar
     if STDERR.tty? && !Rails.env.test?
-      @pbar = ProgressBar.create(title: key, total: cs.total_count)
+      @pbar = ProgressBar.create(format: '%e |%b>>%i| %p%% %t', title: key, total: cs.total_count)
     end
   end
 
