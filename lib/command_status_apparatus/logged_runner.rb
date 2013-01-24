@@ -58,7 +58,7 @@ class LoggedRunner
 
   def initialize_pbar
     if STDERR.tty? && !Rails.env.test?
-      @pbar = ProgressBar.new(key, cs.total_count)
+      @pbar = ProgressBar.create(title: key, total: cs.total_count)
     end
   end
 
@@ -75,7 +75,7 @@ class LoggedRunner
     else
       @success_count += 1
     end
-    pbar.inc  if pbar
+    pbar.increment  if pbar
   end
 
   def update_status
