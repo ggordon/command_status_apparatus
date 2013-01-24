@@ -1,7 +1,7 @@
 require 'command_status_apparatus/version'
 require 'rails'
 require 'active_record'
-require 'progressbar'
+require 'ruby-progressbar'
 
 module CommandStatusApparatus
   # Your code goes here...
