@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'ruby-progressbar'
 
-  gem.add_runtime_dependency 'rails', '~> 3.0'
+  gem.add_runtime_dependency 'rails', '>= 3.0', '< 5.0'
 
   gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency('minitest')
