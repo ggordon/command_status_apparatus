@@ -12,6 +12,15 @@ class CommandStatus < ActiveRecord::Base
     select("distinct(command_statuses.key)").map(&:key)
   end
 
+  def update_status
+    self.status = if success_count == total_count
+                    'OK'
+                  elsif success_count == 0
+                    'FAIL'
+                  else
+                    'PARTIAL'
+                  end
+  end
 end
 
 

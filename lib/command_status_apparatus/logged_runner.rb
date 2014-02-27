@@ -26,8 +26,9 @@ class LoggedRunner
     raise LoggedRunnerBlockRequiredException unless blk
     begin
       @cs = CommandStatus.create(key: key)
+      cs.success_count = 0
       run_list blk.call
-      update_status
+      cs.update_status
     ensure
       cs.save
     end
@@ -37,21 +38,31 @@ class LoggedRunner
 
   def run_list(list)
     case list
+    when CommandStatusInterface
+      cs.total_count = 100
+      initialize_pbar
+      list.initialize_command_status(cs, pbar)
+      run_item(list)
+      cs.success_count -= 1 # need to correct for the overcount
     when Array
       cs.total_count = list.size
       initialize_pbar
       while item = list.shift do
         run_item(item)
+        pbar.increment  if pbar
       end
     when ActiveRecord::Relation
       cs.total_count = list.count
       initialize_pbar
       list.find_each do |list_item|
         run_item(list_item)
+        pbar.increment  if pbar
       end
     else
       cs.total_count = 1
+      initialize_pbar
       run_item(list)
+      cs.success_count = 1
     end
     pbar.finish  if pbar
   end
@@ -73,19 +84,7 @@ class LoggedRunner
       cs.message = e.message
       cs.failed_instance = item.to_s
     else
-      @success_count += 1
-    end
-    pbar.increment  if pbar
-  end
-
-  def update_status
-    cs.success_count = @success_count
-    if @success_count == cs.total_count
-      cs.status = 'OK'
-    elsif @success_count == 0
-      cs.status = 'FAIL'
-    else
-      cs.status = 'PARTIAL'
+      cs.success_count += 1
     end
   end
 
