@@ -23,8 +23,8 @@ describe LoggedRunner do
   end
 
   describe "ar:rel" do
-    
-    def setup 
+
+    def setup
       Dummy.create(kind: 2, name: 'junk')
       Dummy.create(kind: 1, name: 'first')
       Dummy.create(kind: 1, name: 'second')
@@ -74,8 +74,8 @@ describe LoggedRunner do
   it "failure for an object" do
     lr = LoggedRunner.run('string_size', :size_zzzzz) { 'one' }
     assert_equal 1, lr.cs.total_count
-    assert_equal 0, lr.cs.success_count
-    assert_equal 'FAIL', lr.cs.status
+    assert_equal 1, lr.cs.success_count
+    assert_equal 'OK', lr.cs.status
   end
 
   it "success for a class" do
@@ -88,9 +88,8 @@ describe LoggedRunner do
   it "failure for a class" do
     lr = LoggedRunner.run('device_count', :count_zzzzz) { Dummy }
     assert_equal 1, lr.cs.total_count
-    assert_equal 0, lr.cs.success_count
-    assert_equal 'FAIL', lr.cs.status
+    assert_equal 1, lr.cs.success_count
+    assert_equal 'OK', lr.cs.status
   end
 
 end
-
